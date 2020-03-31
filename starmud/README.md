@@ -19,7 +19,7 @@ An inherit for a special type of monster, designed to lower memory, CPU and band
 A room which contains some set theory used as a randomised logic puzzle. This is more player-facing.
     
 ### pslam.c
-An offensive command, able to hit multiple targets by filtering the room for matching targets using a function pointer (may be translated as 'lambda function' with modern languages).
+An offensive command, able to hit multiple targets by filtering the room for matching targets using function pointers/lambda functions.
   
 ### igglewicz.c
 A vendor interfacing with the dark matter daemon above.  This is more player-facing. 
