@@ -1,4 +1,7 @@
 # StarMUD
+
+<b>The files presented here are for portfolio example only.</b>
+
 StarMUD is an online multiplayer game (more specifically, a MUD) that has been active since 1992.  It has hundreds (if not thousands) of unique users, although only a handful still play today.
 
 Since the original owners and developers have long since abandoned the codebase many years ago, I have slowly rewritten or modernised almost every aspect of the game itself over the years.
