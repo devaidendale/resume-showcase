@@ -8,11 +8,11 @@ StarCiv was one of the final individual projects at AIE.  It was a 3D 'game' I m
 
 ### mapmanager.cs
 
-Handled and displayed the game map and all its objects.
+Handles and displays the game map and all its objects.
 
 ### nebula.fx
 
-One of the shaders that drew the nebula, using Perlin noise.
+One of the shaders that draws the nebula, using Perlin noise.
 
 ### perlin.cs
 
