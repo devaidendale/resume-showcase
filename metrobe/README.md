@@ -18,6 +18,10 @@ The guts of the backend, the Metrobe daemon handled most of the data and data pr
 
 Handles all the bus data retrieved from the Metrobe daemon's processes.
 
+### update-buses.php
+
+One of the frontend -> backend interfaces, seamlessly grabbing bus data to present to the user.
+
 ### glider.php
 
 Interfaces with La Trobe's own API for their internal transport.
