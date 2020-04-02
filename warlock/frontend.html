@@ -1,0 +1,193 @@
+<html>
+  <head>
+    <title>Wind Turbine Blade Calculator FrontEnd</title>
+  </head>
+
+  <body><center>
+    <h1>Wind Turbine Blade Calculator FrontEnd</h1>
+
+    <form action = "bladecalc.php" method = "POST" name = "formBlade">
+      <font face = "courier new">
+
+        <table border = 0 cellspacing = 1>
+          <td>
+            <center><img src="PICTURE2.jpg"></img></center>
+          </td>
+          <td>
+            <center><img src="PICTURE1.gif"></img></center>
+          </td>
+        </table>
+
+        <table border = 0 cellspacing = 1>
+
+          <tr>
+            <td>
+              <input type = text value = 3 name = "blades" size = 2>
+            </td>
+            <td>
+              Number of Blades
+            </td>
+            <td>
+              <input type = radio name = "radMeasure[]" value = "SI" onclick = "si();" CHECKED>SI
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type = text value = 7 name = "tsr" size = 2>
+            </td>
+            <td>
+              TSR
+            </td>
+            <td>
+            </td>
+          </tr>
+           <tr>
+            <td>
+              <input type = text value = 0.4 name = "bladeEff" size = 2>
+            </td>
+            <td>
+              Blade Efficiency
+            </td>
+            <td>
+              <input type = radio name = "radMeasure[]" value = "Metric" onclick = "metric();">Metric
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span id="inputBladeRadius"><input type = text value = 1 name = "bladeRad" size = 2></span>
+            </td>
+            <td>
+              <span id="outputBladeRadius">Blade Radius (m)</span>
+            </td>
+            <td>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <span id="inputWindSpeed"><input type = text value = 15 name = "windSpeed" size = 2></span>
+            </td>
+            <td>
+              <span id="outputWindSpeed">Wind Speed (m/s)</span>
+            </td>
+            <td>
+              <input type = radio name = "radMeasure[]" value = "Imperial" onclick = "imperial();">Imperial
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td>
+              <center><input type = submit name = "submit" value = "Solve Equations"></center>
+            </td>
+          </tr>
+        </table>
+
+      <br><img src="PICTURE3.jpg"></img>
+
+      <script type="text/javascript">
+        var jWindSpeed;
+        var jBladeRad;
+
+         // 1 == SI; 2 == Metric; 3 == Imperial.
+        var jMeasure = 1;
+
+        function si() {
+        	
+        	  // Dynamically obtain input values, even if changed by user.
+        	jWindSpeed = document.formBlade.windSpeed.value;
+        	jBladeRad  = document.formBlade.bladeRad.value;
+        	
+            // Do nothing if SI is already selected.
+          if(jMeasure == 1) {}
+
+            // Convert from kph to m/s if being converted from Metric.
+          else if(jMeasure == 2) {
+            jWindSpeed = (jWindSpeed * 1000 / 60 / 60);
+          }
+
+            // Convert from mph to m/s, and from feet to metres, if being converted from Imperial.
+          else if(jMeasure == 3) {
+            jWindSpeed = (jWindSpeed * 1609.3 / 60 / 60);
+            jBladeRad = (jBladeRad / 3.2808);
+          }
+
+          jMeasure = 1;
+
+          document.getElementById("outputWindSpeed").innerHTML = "Wind Speed (m/s)";
+          document.getElementById("outputBladeRadius").innerHTML = "Blade Radius (m)";
+
+          document.getElementById("inputWindSpeed").innerHTML = "<input type = text value = "+Math.round(jWindSpeed*10)/10+" name = \"windSpeed\" size = 2>";
+          document.getElementById("inputBladeRadius").innerHTML = "<input type = text value = "+Math.round(jBladeRad*10)/10+" name = \"bladeRad\" size = 2>";
+
+        }
+
+        function metric() {
+
+            // Dynamically obtain input values, even if changed by user.
+        	jWindSpeed = document.formBlade.windSpeed.value;
+        	jBladeRad  = document.formBlade.bladeRad.value;
+
+            // Convert from m/s to kph if being converted from SI.
+          if(jMeasure == 1) {
+            jWindSpeed = (jWindSpeed / 1000 * 60 * 60);
+          }
+
+            // Do nothing if Metric is already selected.
+          else if(jMeasure == 2) {}
+
+            // Convert from mph to kph, and from feet to metres, if being converted from Imperial.
+          else if(jMeasure == 3) {
+            jWindSpeed = (jWindSpeed * 1.6093);
+            jBladeRad = (jBladeRad / 3.2808);
+          }
+
+          jMeasure = 2;
+
+          document.getElementById("outputWindSpeed").innerHTML = "Wind Speed (kph)";
+          document.getElementById("outputBladeRadius").innerHTML = "Blade Radius (m)";
+
+          document.getElementById("inputWindSpeed").innerHTML = "<input type = text value = "+Math.round(jWindSpeed*10)/10+" name = \"windSpeed\" size = 2>";
+          document.getElementById("inputBladeRadius").innerHTML = "<input type = text value = "+Math.round(jBladeRad*10)/10+" name = \"bladeRad\" size = 2>";
+
+        }
+
+        function imperial() {
+        	
+            // Dynamically obtain input values, even if changed by user.
+        	jWindSpeed = document.formBlade.windSpeed.value;
+        	jBladeRad  = document.formBlade.bladeRad.value;
+
+            // Convert from m/s to mph, and from metres to feet, if being converted from SI.
+          if(jMeasure == 1) {
+            jWindSpeed = (jWindSpeed / 1000 * 0.6213 * 60 * 60);
+            jBladeRad = (jBladeRad * 3.2808);
+          }
+
+            // Convert from kph to mph, and from metres to feet, if being converted from Metric.
+          else if(jMeasure == 2) {
+            jWindSpeed = (jWindSpeed * 0.6213);
+            jBladeRad = (jBladeRad * 3.2808);
+          }
+
+            // Do nothing if Imperial is already selected.
+          else if(jMeasure == 3) {}
+
+          jMeasure = 3;
+
+          document.getElementById("outputWindSpeed").innerHTML = "Wind Speed (mph)";
+          document.getElementById("outputBladeRadius").innerHTML = "Blade Radius (feet)";
+          document.getElementById("inputWindSpeed").innerHTML = "<input type = text value = "+Math.round(jWindSpeed*10)/10+" name = \"windSpeed\" size = 2>";
+          document.getElementById("inputBladeRadius").innerHTML = "<input type = text value = "+Math.round(jBladeRad*10)/10+" name = \"bladeRad\" size = 2>";
+
+        }
+
+      </script>
+
+      </font>
+
+    </form>
+
+  </center></body>
+
+</html>
