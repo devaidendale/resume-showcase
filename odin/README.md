@@ -7,5 +7,3 @@ Odin is a Discord bot which handles the administrative (and sometimes political)
 Discord is a VoIP, communication and pseudo social media application, mostly tailored to gamers, although it does see significant use as simply a communication app (as comparable to other apps of this function such as Telegram, Whatsapp, Kik, etc).
 
 Odin is written in Java, using the Discord4J library to interface with Discord's API.
-
-Odin possesses some sensitive information in its code, so significant amounts have been truncated in this example.
