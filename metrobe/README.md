@@ -2,7 +2,7 @@
 
 <b>The files presented here are for portfolio example only.</b>
 
-Metrobe was an app developed by La Trobe students and later iterated on by a subsection of that group to incorporate La Trobe's own API which handled their internal student transport.
+Metrobe was a transportation app developed by La Trobe students and later iterated on by a subsection of that group to incorporate La Trobe's own API which handled their internal student transport.
 
 A detailed recount of the original development process was written by the front-end designer: https://medium.com/@SnazzyHam/the-year-long-process-to-change-the-way-public-transport-was-perceived-at-la-trobe-university-5c78a758f395
 
